@@ -1,1 +1,552 @@
-<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Avalanche Field Report - Whistler/Blackcomb</title>\n    <style>\n        * {\n            margin: 0;\n            padding: 0;\n            box-sizing: border-box;\n        }\n\n        body {\n            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\n            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n            padding: 20px;\n            color: #333;\n        }\n\n        .dashboard {\n            max-width: 1200px;\n            margin: 0 auto;\n        }\n\n        .header {\n            background: white;\n            border-radius: 12px;\n            padding: 25px;\n            margin-bottom: 20px;\n            box-shadow: 0 4px 6px rgba(0,0,0,0.1);\n        }\n\n        .header h1 {\n            color: #2d3748;\n            font-size: 24px;\n            margin-bottom: 15px;\n        }\n\n        .meta-info {\n            display: grid;\n            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));\n            gap: 15px;\n            margin-top: 15px;\n        }\n\n        .meta-item {\n            background: #f7fafc;\n            padding: 12px;\n            border-radius: 8px;\n            border-left: 4px solid #667eea;\n        }\n\n        .meta-label {\n            font-size: 12px;\n            color: #718096;\n            font-weight: 600;\n            text-transform: uppercase;\n            margin-bottom: 4px;\n        }\n\n        .meta-value {\n            font-size: 14px;\n            color: #2d3748;\n            font-weight: 500;\n        }\n\n        .danger-ratings {\n            background: white;\n            border-radius: 12px;\n            padding: 25px;\n            margin-bottom: 20px;\n            box-shadow: 0 4px 6px rgba(0,0,0,0.1);\n        }\n\n        .danger-ratings h2 {\n            font-size: 18px;\n            margin-bottom: 20px;\n            color: #2d3748;\n        }\n\n        .rating-grid {\n            display: grid;\n            grid-template-columns: repeat(3, 1fr);\n            gap: 15px;\n        }\n\n        .rating-card {\n            text-align: center;\n            padding: 20px;\n            border-radius: 10px;\n            position: relative;\n        }\n\n        .rating-card.moderate {\n            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);\n            color: white;\n        }\n\n        .rating-card.low {\n            background: linear-gradient(135deg, #34d399 0%, #10b981 100%);\n            color: white;\n        }\n\n        .rating-card.none {\n            background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);\n            color: white;\n        }\n\n        .rating-card.considerable {\n            background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);\n            color: white;\n        }\n\n        .rating-card.high {\n            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);\n            color: white;\n        }\n\n        .rating-label {\n            font-size: 12px;\n            font-weight: 600;\n            text-transform: uppercase;\n            opacity: 0.9;\n            margin-bottom: 8px;\n        }\n\n        .rating-value {\n            font-size: 24px;\n            font-weight: bold;\n        }\n\n        .grid-2col {\n            display: grid;\n            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));\n            gap: 20px;\n            margin-bottom: 20px;\n        }\n\n        .card {\n            background: white;\n            border-radius: 12px;\n            padding: 25px;\n            box-shadow: 0 4px 6px rgba(0,0,0,0.1);\n        }\n\n        .card h3 {\n            font-size: 16px;\n            color: #2d3748;\n            margin-bottom: 15px;\n            padding-bottom: 10px;\n            border-bottom: 2px solid #e2e8f0;\n            display: flex;\n            align-items: center;\n        }\n\n        .card h3::before {\n            content: '▸';\n            color: #667eea;\n            margin-right: 8px;\n            font-size: 20px;\n        }\n\n        .observation-text {\n            font-size: 14px;\n            line-height: 1.6;\n            color: #4a5568;\n        }\n\n        .obs-item {\n            background: #fef3c7;\n            border-left: 4px solid #f59e0b;\n            padding: 12px;\n            border-radius: 6px;\n            margin-bottom: 10px;\n            font-size: 13px;\n        }\n\n        .obs-detail {\n            margin: 3px 0;\n            color: #92400e;\n        }\n\n        .problem-box {\n            background: #fef3c7;\n            border-left: 4px solid #f59e0b;\n            padding: 15px;\n            border-radius: 6px;\n            margin-bottom: 10px;\n        }\n\n        .problem-detail {\n            font-size: 13px;\n            color: #92400e;\n            margin: 5px 0;\n        }\n\n        .problem-label {\n            font-weight: 600;\n            margin-right: 5px;\n        }\n\n        .instability-list {\n            list-style: none;\n        }\n\n        .instability-list li {\n            padding: 10px;\n            margin-bottom: 8px;\n            background: #fee2e2;\n            border-left: 4px solid #ef4444;\n            border-radius: 4px;\n            font-size: 14px;\n            color: #991b1b;\n        }\n\n        .instability-list li::before {\n            content: '⚠';\n            margin-right: 10px;\n        }\n\n        .actions-list {\n            list-style: none;\n        }\n\n        .actions-list li {\n            padding: 12px;\n            margin-bottom: 10px;\n            background: #dbeafe;\n            border-left: 4px solid #3b82f6;\n            border-radius: 4px;\n            font-size: 14px;\n            color: #1e40af;\n            line-height: 1.5;\n        }\n\n        .actions-list li::before {\n            content: '✓';\n            margin-right: 10px;\n            font-weight: bold;\n            color: #3b82f6;\n        }\n\n        .summary-card {\n            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n            color: white;\n            border-radius: 12px;\n            padding: 25px;\n            box-shadow: 0 4px 6px rgba(0,0,0,0.1);\n        }\n\n        .summary-card h3 {\n            color: white;\n            border-bottom-color: rgba(255,255,255,0.3);\n        }\n\n        .summary-card h3::before {\n            color: white;\n        }\n\n        .summary-text {\n            font-size: 14px;\n            line-height: 1.7;\n            opacity: 0.95;\n        }\n\n        .badge {\n            display: inline-block;\n            padding: 4px 12px;\n            border-radius: 12px;\n            font-size: 12px;\n            font-weight: 600;\n            margin-right: 8px;\n            margin-bottom: 8px;\n        }\n\n        .badge.warning {\n            background: #fef3c7;\n            color: #92400e;\n        }\n\n        @media (max-width: 768px) {\n            .rating-grid {\n                grid-template-columns: 1fr;\n            }\n            \n            .grid-2col {\n                grid-template-columns: 1fr;\n            }\n        }\n    </style>\n</head>\n<body>\n    <div class=\"dashboard\">\n        <!-- Header -->\n        <div class=\"header\">\n            <h1>🏔 Avalanche Field Report</h1>\n            <div class=\"meta-info\">\n                <div class=\"meta-item\">\n                    <div class=\"meta-label\">Date</div>\n                    <div class=\"meta-value\">2025-11-02</div>\n                </div>\n                <div class=\"meta-item\">\n                    <div class=\"meta-label\">Time</div>\n                    <div class=\"meta-value\">07:45 AM</div>\n                </div>\n                <div class=\"meta-item\">\n                    <div class=\"meta-label\">Location</div>\n                    <div class=\"meta-value\">Whistler/Blackcomb</div>\n                </div>\n                <div class=\"meta-item\">\n                    <div class=\"meta-label\">Coordinates</div>\n                    <div class=\"meta-value\">50.098°N, 122.938°W</div>\n                </div>\n            </div>\n        </div>\n\n        <!-- Danger Ratings -->\n        <div class=\"danger-ratings\">\n            <h2>Avalanche Hazard Assessment</h2>\n            <div class=\"rating-grid\">\n                \n                            <div class=\"rating-card moderate\">\n                                <div class=\"rating-label\">Alpine</div>\n                                <div class=\"rating-value\">MODERATE</div>\n                            </div>\n                            <div class=\"rating-card low\">\n                                <div class=\"rating-label\">Treeline</div>\n                                <div class=\"rating-value\">LOW</div>\n                            </div>\n                            <div class=\"rating-card none\">\n                                <div class=\"rating-label\">Below Treeline</div>\n                                <div class=\"rating-value\">NO RATING</div>\n                            </div>\n                        \n            </div>\n        </div>\n\n        <!-- Observations and Problems -->\n        <div class=\"grid-2col\">\n            <div class=\"card\">\n                <h3>Avalanche Observations</h3>\n                \n                            <div class=\"obs-item\">\n                                <div class=\"obs-detail\"><strong>Size:</strong> 2</div>\n                                <div class=\"obs-detail\"><strong>Type:</strong> Storm Slab</div>\n                                <div class=\"obs-detail\"><strong>Trigger:</strong> Na</div>\n                                <div class=\"obs-detail\"><strong>Time:</strong> 24-48 hrs</div>\n                                <div class=\"obs-detail\" style=\"margin-top: 8px;\">Na high in rocks, glide slab across Shale Slope visible, but has not released yet.</div>\n                            </div>\n                        \n                            <div class=\"obs-item\">\n                                <div class=\"obs-detail\"><strong>Size:</strong> 2</div>\n                                <div class=\"obs-detail\"><strong>Type:</strong> Storm Slab</div>\n                                <div class=\"obs-detail\"><strong>Trigger:</strong> Na</div>\n                                <div class=\"obs-detail\"><strong>Time:</strong> 24-48 hrs</div>\n                                <div class=\"obs-detail\" style=\"margin-top: 8px;\">Na cycle during AR event between oct 31 and nov 1st, all asps 1850m - 2200m.</div>\n                            </div>\n                        \n                            <div class=\"obs-item\">\n                                <div class=\"obs-detail\"><strong>Size:</strong> 2</div>\n                                <div class=\"obs-detail\"><strong>Type:</strong> Storm Slab</div>\n                                <div class=\"obs-detail\"><strong>Trigger:</strong> Na</div>\n                                <div class=\"obs-detail\"><strong>Time:</strong> 24-48 hrs</div>\n                                <div class=\"obs-detail\" style=\"margin-top: 8px;\">Na out of Shale chute, ran to bottom, FL filled back in.  Debris looked wet when it released.</div>\n                            </div>\n                        \n            </div>\n\n            <div class=\"card\">\n                <h3>Current Avalanche Problems</h3>\n                \n                            <div class=\"problem-box\">\n                                <div class=\"problem-detail\">\n                                    <span class=\"problem-label\">Problem 1:</span> Storm Slab\n                                </div>\n                                <div class=\"problem-detail\">\n                                    <span class=\"problem-label\">Size:</span> 1.5\n                                </div>\n                                <div class=\"problem-detail\">\n                                    <span class=\"problem-label\">Sensitivity:</span> Stubborn\n                                </div>\n                                <div class=\"problem-detail\">\n                                    <span class=\"problem-label\">Distribution:</span> Isolated\n                                </div>\n                                <p style=\"font-size: 13px; color: #6b7280; margin-top: 10px;\">Prev Na cycle on Oct 31-Nov 1st.  </p>\n                            </div>\n                        \n            </div>\n        </div>\n\n        <!-- Hazard Comments and Terrain -->\n        <div class=\"grid-2col\">\n            <div class=\"card\">\n                <h3>Hazard Assessment</h3>\n                \n                            <div class=\"observation-text\">Snowline currently above 1600m.  Hazard  increasing with warm AR event on Wednesday expected to trigger Na cycle in ALP N'ly terrain.  </div>\n                            <div style=\"margin-top: 10px;\"><span class=\"badge warning\">Confidence: Moderate</span></div>\n                        \n            </div>\n\n            <div class=\"card\">\n                <h3>Terrain Management</h3>\n                \n                            <div class=\"problem-detail\"><span class=\"problem-label\">Strategic Mindset:</span> Stepping Out</div>\n                            <div class=\"observation-text\" style=\"margin-top: 10px;\">Cooling temps, groomers to re-establish alpine road system on Monday.  Work skidoos cleared for travel on track packed routes.  </div>\n                        \n            </div>\n        </div>\n\n        <!-- Previous Reports -->\n        \n                    <div class=\"card\" style=\"margin-bottom: 20px;\">\n                        <h3>Previous Reports</h3>\n                        <div class=\"observation-text\">Operations and guides reported that cooling temperatures and groomed routes helped maintain travel on track-packed terrain. The strategic mindset of \"Stepping Out\" was emphasized, with teams carefully expanding into manageable avalanche terrain while remaining mindful of evolving conditions.</div>\n                    </div>\n                \n\n        <!-- Key Actions -->\n        <div class=\"card\" style=\"margin-bottom: 20px;\">\n            <h3>Key Actions & Safety Considerations</h3>\n            <ul class=\"actions-list\"><li>Monitor natural avalanche releases actively, particularly in the Shale chute area.</li><li>Use conservative route selection, especially above the 1600m snowline where hazards are accentuated.</li><li>Maintain vigilance as the moderate hazard in the alpine zone may increase with the upcoming warm atmospheric river event.</li><li>Follow groomed routes where conditions are track-packed and stable, but reassess if new releases are observed.</li><li>Regularly check updated forecasts and be prepared to adjust plans based on evolving stability conditions.</li></ul>\n        </div>\n\n        <!-- Closing Summary -->\n        \n                    <div class=\"summary-card\">\n                        <h3>Closing Summary</h3>\n                        <div class=\"summary-text\">This report outlines observed natural size 2 storm slab avalanches with moderate hazard ratings in the alpine zone, primarily driven by recent precipitation and the influence of a warm atmospheric river event. Cautious travel with an emphasis on conservative decision-making remains paramount as conditions may evolve rapidly. Operators and guides should prioritize safe, well-assessed routes above 1600m and re-assess terrain as weather conditions change. Stay updated and be prepared for potential increases in instability, ensuring that all backcountry trips are planned with current hazard awareness in mind.</div>\n                    </div>\n                \n    </div>\n    </div>\n</body>\n</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avalanche Field Report - Whistler/Blackcomb</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            color: #333;
+        }
+
+        .dashboard {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            color: #2d3748;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .meta-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .meta-item {
+            background: #f7fafc;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .meta-label {
+            font-size: 12px;
+            color: #718096;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .meta-value {
+            font-size: 14px;
+            color: #2d3748;
+            font-weight: 500;
+        }
+
+        .danger-ratings {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .danger-ratings h2 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+
+        .rating-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .rating-card {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .rating-card.moderate {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: white;
+        }
+
+        .rating-card.low {
+            background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+            color: white;
+        }
+
+        .rating-card.none {
+            background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);
+            color: white;
+        }
+
+        .rating-card.considerable {
+            background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
+            color: white;
+        }
+
+        .rating-card.high {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+        }
+
+        .rating-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+
+        .rating-value {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            font-size: 16px;
+            color: #2d3748;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+        }
+
+        .card h3::before {
+            content: '▸';
+            color: #667eea;
+            margin-right: 8px;
+            font-size: 20px;
+        }
+
+        .observation-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #4a5568;
+        }
+
+        .obs-item {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+
+        .obs-detail {
+            margin: 3px 0;
+            color: #92400e;
+        }
+
+        .problem-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        .problem-detail {
+            font-size: 13px;
+            color: #92400e;
+            margin: 5px 0;
+        }
+
+        .problem-label {
+            font-weight: 600;
+            margin-right: 5px;
+        }
+
+        .instability-list {
+            list-style: none;
+        }
+
+        .instability-list li {
+            padding: 10px;
+            margin-bottom: 8px;
+            background: #fee2e2;
+            border-left: 4px solid #ef4444;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #991b1b;
+        }
+
+        .instability-list li::before {
+            content: '⚠';
+            margin-right: 10px;
+        }
+
+        .actions-list {
+            list-style: none;
+        }
+
+        .actions-list li {
+            padding: 12px;
+            margin-bottom: 10px;
+            background: #dbeafe;
+            border-left: 4px solid #3b82f6;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #1e40af;
+            line-height: 1.5;
+        }
+
+        .actions-list li::before {
+            content: '✓';
+            margin-right: 10px;
+            font-weight: bold;
+            color: #3b82f6;
+        }
+
+        .summary-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .summary-card h3 {
+            color: white;
+            border-bottom-color: rgba(255,255,255,0.3);
+        }
+
+        .summary-card h3::before {
+            color: white;
+        }
+
+        .summary-text {
+            font-size: 14px;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        .badge.warning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .header {
+                padding: 20px 15px;
+            }
+
+            .header h1 {
+                font-size: 20px;
+            }
+
+            .meta-info {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .meta-item {
+                padding: 10px;
+            }
+
+            .meta-label {
+                font-size: 11px;
+            }
+
+            .meta-value {
+                font-size: 13px;
+            }
+
+            .danger-ratings {
+                padding: 20px 15px;
+            }
+
+            .danger-ratings h2 {
+                font-size: 16px;
+            }
+
+            .rating-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .rating-card {
+                padding: 15px;
+            }
+
+            .rating-value {
+                font-size: 20px;
+            }
+            
+            .grid-2col {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .card {
+                padding: 20px 15px;
+            }
+
+            .card h3 {
+                font-size: 15px;
+            }
+
+            .observation-text {
+                font-size: 13px;
+            }
+
+            .obs-item,
+            .problem-box {
+                padding: 10px;
+            }
+
+            .obs-detail,
+            .problem-detail {
+                font-size: 12px;
+            }
+
+            .instability-list li,
+            .actions-list li {
+                padding: 10px;
+                font-size: 13px;
+            }
+
+            .summary-card {
+                padding: 20px 15px;
+            }
+
+            .summary-text {
+                font-size: 13px;
+            }
+
+            .badge {
+                font-size: 11px;
+                padding: 3px 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+
+            .header,
+            .danger-ratings,
+            .card,
+            .summary-card {
+                border-radius: 8px;
+                margin-bottom: 15px;
+            }
+
+            .header h1 {
+                font-size: 18px;
+            }
+
+            .rating-label {
+                font-size: 11px;
+            }
+
+            .rating-value {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Header -->
+        <div class="header">
+            <h1>🏔 Avalanche Field Report</h1>
+            <div class="meta-info">
+                <div class="meta-item">
+                    <div class="meta-label">Date</div>
+                    <div class="meta-value">2025-11-02</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Time</div>
+                    <div class="meta-value">07:45 AM</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Location</div>
+                    <div class="meta-value">Whistler/Blackcomb</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Coordinates</div>
+                    <div class="meta-value">50.098°N, 122.938°W</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Danger Ratings -->
+        <div class="danger-ratings">
+            <h2>Avalanche Hazard Assessment</h2>
+            <div class="rating-grid">
+                
+                            <div class="rating-card moderate">
+                                <div class="rating-label">Alpine</div>
+                                <div class="rating-value">MODERATE</div>
+                            </div>
+                            <div class="rating-card low">
+                                <div class="rating-label">Treeline</div>
+                                <div class="rating-value">LOW</div>
+                            </div>
+                            <div class="rating-card none">
+                                <div class="rating-label">Below Treeline</div>
+                                <div class="rating-value">NO RATING</div>
+                            </div>
+                        
+            </div>
+        </div>
+
+        <!-- Observations and Problems -->
+        <div class="grid-2col">
+            <div class="card">
+                <h3>Avalanche Observations</h3>
+                
+                            <div class="obs-item">
+                                <div class="obs-detail"><strong>Size:</strong> 2</div>
+                                <div class="obs-detail"><strong>Type:</strong> Storm Slab</div>
+                                <div class="obs-detail"><strong>Trigger:</strong> Na</div>
+                                <div class="obs-detail"><strong>Time:</strong> 24-48 hrs</div>
+                                <div class="obs-detail" style="margin-top: 8px;">Na high in rocks, glide slab across Shale Slope visible, but has not released yet.</div>
+                            </div>
+                        
+                            <div class="obs-item">
+                                <div class="obs-detail"><strong>Size:</strong> 2</div>
+                                <div class="obs-detail"><strong>Type:</strong> Storm Slab</div>
+                                <div class="obs-detail"><strong>Trigger:</strong> Na</div>
+                                <div class="obs-detail"><strong>Time:</strong> 24-48 hrs</div>
+                                <div class="obs-detail" style="margin-top: 8px;">Na cycle during AR event between oct 31 and nov 1st, all asps 1850m - 2200m.</div>
+                            </div>
+                        
+                            <div class="obs-item">
+                                <div class="obs-detail"><strong>Size:</strong> 2</div>
+                                <div class="obs-detail"><strong>Type:</strong> Storm Slab</div>
+                                <div class="obs-detail"><strong>Trigger:</strong> Na</div>
+                                <div class="obs-detail"><strong>Time:</strong> 24-48 hrs</div>
+                                <div class="obs-detail" style="margin-top: 8px;">Na out of Shale chute, ran to bottom, FL filled back in.  Debris looked wet when it released.</div>
+                            </div>
+                        
+            </div>
+
+            <div class="card">
+                <h3>Current Avalanche Problems</h3>
+                
+                            <div class="problem-box">
+                                <div class="problem-detail">
+                                    <span class="problem-label">Problem 1:</span> Storm Slab
+                                </div>
+                                <div class="problem-detail">
+                                    <span class="problem-label">Size:</span> 1.5
+                                </div>
+                                <div class="problem-detail">
+                                    <span class="problem-label">Sensitivity:</span> Stubborn
+                                </div>
+                                <div class="problem-detail">
+                                    <span class="problem-label">Distribution:</span> Isolated
+                                </div>
+                                <p style="font-size: 13px; color: #6b7280; margin-top: 10px;">Prev Na cycle on Oct 31-Nov 1st.  </p>
+                            </div>
+                        
+            </div>
+        </div>
+
+        <!-- Hazard Comments and Terrain -->
+        <div class="grid-2col">
+            <div class="card">
+                <h3>Hazard Assessment</h3>
+                
+                            <div class="observation-text">Snowline currently above 1600m.  Hazard  increasing with warm AR event on Wednesday expected to trigger Na cycle in ALP N'ly terrain.  </div>
+                            <div style="margin-top: 10px;"><span class="badge warning">Confidence: Moderate</span></div>
+                        
+            </div>
+
+            <div class="card">
+                <h3>Terrain Management</h3>
+                
+                            <div class="problem-detail"><span class="problem-label">Strategic Mindset:</span> Stepping Out</div>
+                            <div class="observation-text" style="margin-top: 10px;">Cooling temps, groomers to re-establish alpine road system on Monday.  Work skidoos cleared for travel on track packed routes.  </div>
+                        
+            </div>
+        </div>
+
+        <!-- Snowpack Structure -->
+        
+
+        <!-- Previous Reports -->
+        
+                    <div class="card" style="margin-bottom: 20px;">
+                        <h3>Previous Reports</h3>
+                        <div class="observation-text">Operations and guides reported that cooling temperatures and groomed routes helped maintain travel on track-packed terrain. The strategic mindset of "Stepping Out" was emphasized, with teams carefully expanding into manageable avalanche terrain while remaining mindful of evolving conditions.</div>
+                    </div>
+                
+
+        <!-- Key Actions -->
+        <div class="card" style="margin-bottom: 20px;">
+            <h3>Key Actions & Safety Considerations</h3>
+            <ul class="actions-list"><li>Monitor natural avalanche releases actively, particularly in the Shale chute area.</li><li>Use conservative route selection, especially above the 1600m snowline where hazards are accentuated.</li><li>Maintain vigilance as the moderate hazard in the alpine zone may increase with the upcoming warm atmospheric river event.</li><li>Follow groomed routes where conditions are track-packed and stable, but reassess if new releases are observed.</li><li>Regularly check updated forecasts and be prepared to adjust plans based on evolving stability conditions.</li></ul>
+        </div>
+
+        <!-- Closing Summary -->
+        
+                    <div class="summary-card">
+                        <h3>Closing Summary</h3>
+                        <div class="summary-text">This report outlines observed natural size 2 storm slab avalanches with moderate hazard ratings in the alpine zone, primarily driven by recent precipitation and the influence of a warm atmospheric river event. Cautious travel with an emphasis on conservative decision-making remains paramount as conditions may evolve rapidly. Operators and guides should prioritize safe, well-assessed routes above 1600m and re-assess terrain as weather conditions change. Stay updated and be prepared for potential increases in instability, ensuring that all backcountry trips are planned with current hazard awareness in mind.</div>
+                    </div>
+                
+    </div>
+    </div>
+</body>
+</html>
