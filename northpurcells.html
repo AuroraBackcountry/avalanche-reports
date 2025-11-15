@@ -111,7 +111,7 @@
             <div class="meta-info">
                 <div class="meta-item" aria-label="Date">
                     <div class="meta-label">Date</div>
-                    <div class="meta-value">2025-11-13</div>
+                    <div class="meta-value">2025-11-14</div>
                 </div>
                 <div class="meta-item" aria-label="Time">
                     <div class="meta-label">Time</div>
@@ -133,13 +133,13 @@
             <h2 id="hazard-title">Avalanche Hazard Assessment</h2>
             <div class="rating-grid" role="list">
                 
-                            <div class="rating-card none" role="listitem">
+                            <div class="rating-card moderate" role="listitem">
                                 <div class="rating-label">Alpine</div>
-                                <div class="rating-value">NO RATING</div>
+                                <div class="rating-value">MODERATE</div>
                             </div>
-                            <div class="rating-card none" role="listitem">
+                            <div class="rating-card low" role="listitem">
                                 <div class="rating-label">Treeline</div>
-                                <div class="rating-value">NO RATING</div>
+                                <div class="rating-value">LOW</div>
                             </div>
                             <div class="rating-card none" role="listitem">
                                 <div class="rating-label">Below Treeline</div>
@@ -149,7 +149,13 @@
             </div>
 
             <!-- Comments subcard -->
-            <div class="subcard" aria-live="polite"><p style="color:#9ca3af; font-style:italic">No comments provided</p></div>
+            
+                        <div class="subcard" aria-labelledby="hazard-comments-title">
+                            <h3 id="hazard-comments-title">Comments</h3>
+                            <div class="observation-text">Limited field observations.</div>
+                            <span class="badge warning">Confidence: Low</span>
+                        </div>
+                    
         </section>
 
         <!-- Observations and Problems -->
@@ -158,19 +164,27 @@
                 <h3>Avalanche Observations</h3>
                 
                             <div class="obs-item">
-                                <div class="obs-detail"><strong>Size:</strong> Not reported</div>
-                                <div class="obs-detail"><strong>Type:</strong> Not reported</div>
-                                <div class="obs-detail"><strong>Trigger:</strong> Not reported</div>
-                                <div class="obs-detail"><strong>Time:</strong> Not reported</div>
-                                
+                                <div class="obs-detail"><strong>Size:</strong> 1.5</div>
+                                <div class="obs-detail"><strong>Type:</strong> Wet Slab</div>
+                                <div class="obs-detail"><strong>Trigger:</strong> Na</div>
+                                <div class="obs-detail"><strong>Time:</strong> 12-24 hrs</div>
+                                <div class="obs-detail" style="margin-top:8px;">Macdonald West Shoulder 2, Lens East Gully.</div>
                             </div>
                         
                             <div class="obs-item">
-                                <div class="obs-detail"><strong>Size:</strong> Not reported</div>
-                                <div class="obs-detail"><strong>Type:</strong> Not reported</div>
-                                <div class="obs-detail"><strong>Trigger:</strong> Not reported</div>
-                                <div class="obs-detail"><strong>Time:</strong> Not reported</div>
-                                <div class="obs-detail" style="margin-top:8px;">Sc in previously worked terrain producing dry loose in alpine in the HST</div>
+                                <div class="obs-detail"><strong>Size:</strong> 3</div>
+                                <div class="obs-detail"><strong>Type:</strong> Wet Slab</div>
+                                <div class="obs-detail"><strong>Trigger:</strong> Na</div>
+                                <div class="obs-detail"><strong>Time:</strong> 12-24 hrs</div>
+                                <div class="obs-detail" style="margin-top:8px;">Tupper II (Snow shed +000), Macdonald Gully 6 (3/4 Fan)</div>
+                            </div>
+                        
+                            <div class="obs-item">
+                                <div class="obs-detail"><strong>Size:</strong> 2</div>
+                                <div class="obs-detail"><strong>Type:</strong> Wet Slab</div>
+                                <div class="obs-detail"><strong>Trigger:</strong> Na</div>
+                                <div class="obs-detail"><strong>Time:</strong> 12-24 hrs</div>
+                                <div class="obs-detail" style="margin-top:8px;">Lone Pine, Single Bench, Lens (E and W Gully), Crossover (E and W Gully), Tractor Shed E, Macdonald Gully 5, 7, 8, 8, 9, 10, 11, Gunners 2.</div>
                             </div>
                         
             </div>
@@ -179,10 +193,34 @@
                 <h3>Current Avalanche Problems</h3>
                 
                             <div class="problem-box">
-                                <div class="problem-detail"><span class="problem-label">Problem 1:</span> Not specified</div>
-                                <div class="problem-detail"><span class="problem-label">Size:</span> Not reported</div>
-                                <div class="problem-detail"><span class="problem-label">Sensitivity:</span> Not reported</div>
-                                <div class="problem-detail"><span class="problem-label">Distribution:</span> Not reported</div>
+                                <div class="problem-detail"><span class="problem-label">Problem 1:</span> Wind Slab</div>
+                                <div class="problem-detail"><span class="problem-label">Size:</span> 2</div>
+                                <div class="problem-detail"><span class="problem-label">Sensitivity:</span> Stubborn</div>
+                                <div class="problem-detail"><span class="problem-label">Distribution:</span> Specific</div>
+                                <p style="font-size:13px; color:#6b7280; margin-top:10px;">Extreme wind transport with up to 55mm of precip Wednesday/ Thursday. Limited field observations.</p>
+                            </div>
+                        
+                            <div class="problem-box">
+                                <div class="problem-detail"><span class="problem-label">Problem 2:</span> Storm Slab</div>
+                                <div class="problem-detail"><span class="problem-label">Size:</span> 1.5</div>
+                                <div class="problem-detail"><span class="problem-label">Sensitivity:</span> Stubborn</div>
+                                <div class="problem-detail"><span class="problem-label">Distribution:</span> Widespread</div>
+                                
+                            </div>
+                        
+                            <div class="problem-box">
+                                <div class="problem-detail"><span class="problem-label">Problem 3:</span> Wind Slab</div>
+                                <div class="problem-detail"><span class="problem-label">Size:</span> 1.5</div>
+                                <div class="problem-detail"><span class="problem-label">Sensitivity:</span> Reactive</div>
+                                <div class="problem-detail"><span class="problem-label">Distribution:</span> Specific</div>
+                                
+                            </div>
+                        
+                            <div class="problem-box">
+                                <div class="problem-detail"><span class="problem-label">Problem 4:</span> Persistent Slab</div>
+                                <div class="problem-detail"><span class="problem-label">Size:</span> 2</div>
+                                <div class="problem-detail"><span class="problem-label">Sensitivity:</span> Stubborn</div>
+                                <div class="problem-detail"><span class="problem-label">Distribution:</span> Isolated</div>
                                 
                             </div>
                         
@@ -203,11 +241,11 @@
                         <h3 id="snowpack-title">Snowpack Structure</h3>
                         <div class="subcard" aria-labelledby="snowpack-sim-title">
                             <h3 id="snowpack-sim-title">Report Similarities Identified</h3>
-                            <div class="observation-text"><p>- Snowpack is generally supportive with recent new snow on top.  <br />- Presence of buried surface hoar (SH) layer noted in one report.  <br />- Rain has saturated snowpack near tree-line; some precipitation may have fallen as snow at higher elevations.  <br />- Snow depths vary with elevation: HS around 17cm to 92cm depending on location and elevation.  <br />- Limited alpine observations overall.</p></div>
+                            <div class="observation-text"><p>- Recent storm precipitation has settled on the snowpack surface (28 cm HST in one range, up to 55 mm precipitation/rain in another).  <br />- Surface layers include new snow or rain-affected snow, with crust or rounding snow below.  <br />- Midpack layers exhibit rounding snow structure with some buried surface hoar (SH) layers that are settling or rounding.  <br />- Presence of small faceted crystals near the ground, indicating basal persistent weak layers.  <br />- Multiple buried surface hoar layers from early November with decreasing prominence and rounding characteristics.  <br />- Limited alpine observations noted.</p></div>
                         </div>
                         <div class="subcard" aria-labelledby="snowpack-desc-title" style="margin-top: var(--space-4);">
                             <h3 id="snowpack-desc-title">Snowpack Description</h3>
-                            <div class="observation-text"><p>The snowpack has a recent snow surface layer with 10–15 cm of new snow overlying a small, buried surface hoar layer. Rain (~35 mm) has saturated snow near tree-line, with some snow above 2200 m. Midpack remains supportive and generally right side up. Snow depths vary from 17 cm to 92 cm depending on elevation. Buried surface hoar is a persistent weak layer that requires monitoring due to potential instability.</p></div>
+                            <div class="observation-text"><p>Recent snowfall and rain have formed a surface layer including new snow and rain crusts in mid-elevations. Beneath this, the snowpack is generally rounding with about 100 cm depth at treeline. Several buried surface hoar layers from early November exist at 30–80 cm depth but are rounding and becoming less reactive. Small faceted crystals near the ground suggest a basal persistent weak layer that should be monitored.</p></div>
                         </div>
                     </section>
                 
@@ -216,21 +254,21 @@
         
                     <section class="card" aria-labelledby="prev-reports-title">
                         <h3 id="prev-reports-title">Previous Reports</h3>
-                        <div class="observation-text">Operators from the previous day managed avalanche risks by employing a “Stepping Back” strategic mindset in simple terrain conditions across the Purcell Mountains. Their approach focused on using previously worked terrain, which helped mitigate uncertainty despite limited alpine observations.</div>
+                        <div class="observation-text">No previous reports provided.</div>
                     </section>
                 
 
         <!-- Key Actions -->
         <section class="card" aria-labelledby="key-actions-title">
             <h3 id="key-actions-title">Key Actions & Safety Considerations</h3>
-            <ul class="actions-list"><li>Avoid steep, avalanche-prone slopes, particularly in zones displaying storm slab development.</li><li>Monitor areas near the tree-line where rain-saturation has occurred and retain caution at higher elevations.</li><li>Utilize previously worked terrain to reduce exposure to potentially unstable layers.</li><li>Maintain situational awareness regarding the buried surface hoar layer and its evolving influence on stability.</li><li>Reassess conditions frequently given moderate confidence in the hazard rating.</li></ul>
+            <ul class="actions-list"><li>• Travel with caution in areas with reported wet slab conditions, particularly in gullies and at higher elevations.</li><li>• Monitor weather updates and recent precipitation impacts, as heavy rain has influenced snowpack stability.</li><li>• Avoid avalanche-prone terrain where natural triggers have resulted in size 2 or 3 wet slabs.</li><li>• Utilize conservative decision making on slopes that have shown signs of persistent slab problems and wind slab indications.</li><li>• Maintain clear communication within groups regarding observations and signs of instability.</li></ul>
         </section>
 
         <!-- Closing Summary (optional) -->
         
                     <section class="summary-card" aria-labelledby="closing-summary-title">
                         <h3 id="closing-summary-title">Closing Summary</h3>
-                        <div class="summary-text">This report outlines evolving avalanche hazards in North_Purcells with a focus on storm slab development in alpine terrain and the presence of a potentially unstable buried surface hoar layer. Operators should be prudent when traversing slopes, opt for previously worked and simpler terrain, and continuously monitor changing conditions—especially near the tree-line where rain has saturated the snowpack. Prioritize safety by re-checking forecast updates and ensuring decisions are based on the most current information available.</div>
+                        <div class="summary-text">This report outlines significant wet slab avalanche activity driven by heavy rain and recent snowfall affecting the North_Purcells area. The snowpack exhibits signs of surface crust formation and basal weak layers with rounding characteristics beneath, complicated by wind, persistent, and storm slab problems. Operational decisions should prioritize careful route selection, avoiding key unstable zones, and regular re-assessment of conditions during the day. Users are advised to seek the best snow quality by targeting less exposed areas and following conservative travel strategies given current low confidence in field observations.</div>
                     </section>
                 
     </div>

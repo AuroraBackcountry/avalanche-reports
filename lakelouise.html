@@ -111,7 +111,7 @@
             <div class="meta-info">
                 <div class="meta-item" aria-label="Date">
                     <div class="meta-label">Date</div>
-                    <div class="meta-value">2025-11-13</div>
+                    <div class="meta-value">2025-11-14</div>
                 </div>
                 <div class="meta-item" aria-label="Time">
                     <div class="meta-label">Time</div>
@@ -133,13 +133,13 @@
             <h2 id="hazard-title">Avalanche Hazard Assessment</h2>
             <div class="rating-grid" role="list">
                 
-                            <div class="rating-card none" role="listitem">
+                            <div class="rating-card considerable" role="listitem">
                                 <div class="rating-label">Alpine</div>
-                                <div class="rating-value">NO RATING</div>
+                                <div class="rating-value">CONSIDERABLE</div>
                             </div>
-                            <div class="rating-card none" role="listitem">
+                            <div class="rating-card moderate" role="listitem">
                                 <div class="rating-label">Treeline</div>
-                                <div class="rating-value">NO RATING</div>
+                                <div class="rating-value">MODERATE</div>
                             </div>
                             <div class="rating-card none" role="listitem">
                                 <div class="rating-label">Below Treeline</div>
@@ -149,7 +149,13 @@
             </div>
 
             <!-- Comments subcard -->
-            <div class="subcard" aria-live="polite"><p style="color:#9ca3af; font-style:italic">No comments provided</p></div>
+            
+                        <div class="subcard" aria-labelledby="hazard-comments-title">
+                            <h3 id="hazard-comments-title">Comments</h3>
+                            <div class="observation-text">Suspect isolated windslabs at treeline. Limited observations.</div>
+                            <span class="badge warning">Confidence: Moderate</span>
+                        </div>
+                    
         </section>
 
         <!-- Observations and Problems -->
@@ -158,18 +164,58 @@
                 <h3>Avalanche Observations</h3>
                 
                             <div class="obs-item">
-                                <div class="obs-detail"><strong>Size:</strong> Not reported</div>
-                                <div class="obs-detail"><strong>Type:</strong> Not reported</div>
-                                <div class="obs-detail"><strong>Trigger:</strong> Not reported</div>
+                                <div class="obs-detail"><strong>Size:</strong> 1.5</div>
+                                <div class="obs-detail"><strong>Type:</strong> Wind Slab</div>
+                                <div class="obs-detail"><strong>Trigger:</strong> Xe</div>
                                 <div class="obs-detail"><strong>Time:</strong> Not reported</div>
-                                <div class="obs-detail" style="margin-top:8px;">Xe produced no results.  </div>
+                                <div class="obs-detail" style="margin-top:8px;">shot placement in the edge of the wind lip about 25m down from TC fence,avalanche ran slowly and terminated 20m from Cat track.</div>
+                            </div>
+                        
+                            <div class="obs-item">
+                                <div class="obs-detail"><strong>Size:</strong> 1.5</div>
+                                <div class="obs-detail"><strong>Type:</strong> Wind Slab</div>
+                                <div class="obs-detail"><strong>Trigger:</strong> Na</div>
+                                <div class="obs-detail"><strong>Time:</strong> 0-12 hrs</div>
+                                <div class="obs-detail" style="margin-top:8px;">Numerous Na in fans below steep terrain size 1-1.5. 20-40 deep within the storm snow. Observed on a flight to Bow hut from Banff, mainly along highway 93N </div>
+                            </div>
+                        
+                            <div class="obs-item">
+                                <div class="obs-detail"><strong>Size:</strong> 1.5</div>
+                                <div class="obs-detail"><strong>Type:</strong> Wind Slab</div>
+                                <div class="obs-detail"><strong>Trigger:</strong> Xe</div>
+                                <div class="obs-detail"><strong>Time:</strong> Not reported</div>
+                                <div class="obs-detail" style="margin-top:8px;">2 size 1.5 with up to 20-25 m propagation down 15-25cm 4F-1F in recent HST. No rain crust present at this elevation.</div>
                             </div>
                         
             </div>
 
             <div class="card">
                 <h3>Current Avalanche Problems</h3>
-                <p style="color:#9ca3af; font-style:italic">No avalanche problems reported</p>
+                
+                            <div class="problem-box">
+                                <div class="problem-detail"><span class="problem-label">Problem 1:</span> Wind Slab</div>
+                                <div class="problem-detail"><span class="problem-label">Size:</span> 1.5</div>
+                                <div class="problem-detail"><span class="problem-label">Sensitivity:</span> Reactive</div>
+                                <div class="problem-detail"><span class="problem-label">Distribution:</span> Specific</div>
+                                <p style="font-size:13px; color:#6b7280; margin-top:10px;">15-20+cm HST blown into wind slabs in the alpine by SW/W winds. (observed on a Bow Hut flight Friday). Uncertainty of distribution and sensitivity at treeline</p>
+                            </div>
+                        
+                            <div class="problem-box">
+                                <div class="problem-detail"><span class="problem-label">Problem 2:</span> Wind Slab</div>
+                                <div class="problem-detail"><span class="problem-label">Size:</span> 1</div>
+                                <div class="problem-detail"><span class="problem-label">Sensitivity:</span> Stubborn</div>
+                                <div class="problem-detail"><span class="problem-label">Distribution:</span> Specific</div>
+                                
+                            </div>
+                        
+                            <div class="problem-box">
+                                <div class="problem-detail"><span class="problem-label">Problem 3:</span> Wind Slab</div>
+                                <div class="problem-detail"><span class="problem-label">Size:</span> 1</div>
+                                <div class="problem-detail"><span class="problem-label">Sensitivity:</span> Reactive</div>
+                                <div class="problem-detail"><span class="problem-label">Distribution:</span> Specific</div>
+                                <p style="font-size:13px; color:#6b7280; margin-top:10px;">Periods of atypical winds reverse loading Southerly aspects</p>
+                            </div>
+                        
             </div>
         </section>
 
@@ -187,11 +233,11 @@
                         <h3 id="snowpack-title">Snowpack Structure</h3>
                         <div class="subcard" aria-labelledby="snowpack-sim-title">
                             <h3 id="snowpack-sim-title">Report Similarities Identified</h3>
-                            <div class="observation-text"><p>- Surface layers include recent light snowfall and rain at lower elevations, with some surface crusts formed by warming temperatures.  <br />- Snow is isothermal below approximately 2000-2100m.  <br />- Wind slabs persist in alpine lee and gully features due to recent winds.  <br />- Midpack settled and generally stable, with snow depths tapering below 1800m in some areas.  <br />- Basal melt-freeze crusts present on solar aspects and at lower elevations.  <br />- Snow depth varies from 30-60 cm at treeline to 45-100+ cm in the alpine and glaciers.</p></div>
+                            <div class="observation-text"><p>- Recent storm deposited 15-20 cm of new snow, often wind-packed (HN, 1F-P, or 4F WSL).  <br />- Snow depth varies by elevation with alpine depths generally 50-120 cm, treeline 30-60 cm, and thinner snow below ~1800 m.  <br />- Presence of surface crusts and melt-freeze crusts near and below treeline.  <br />- Fresh wind slabs formed by moderate W/SW winds.  <br />- Basal melt-freeze crust layer present across much of the region.  <br />- Varied precipitation measured in water equivalent (up to 50 mm H2O in 24 hrs).  <br />- Surface faceted or moist layers exist at lower elevations.  <br />- No specific mention of deeply reactive Persistent Weak Layers (PWLs) other than basal melt-freeze crusts and surface crusts.</p></div>
                         </div>
                         <div class="subcard" aria-labelledby="snowpack-desc-title" style="margin-top: var(--space-4);">
                             <h3 id="snowpack-desc-title">Snowpack Description</h3>
-                            <div class="observation-text"><p>Recent light snowfall with rain below 2300m and surface crusts from warming form the top layers, with isothermal snow below 2000m. Small wind slabs exist in alpine lee and gullies. The midpack is settled and snow depths range from 30-60 cm at treeline to over 100 cm in alpine zones. Basal melt-freeze crusts are present on solar aspects and lower elevations. Persistent Weak Layers should be monitored in crusted and wind-affected zones.</p></div>
+                            <div class="observation-text"><p>The snowpack features 15-20 cm of recent snow with surface crusts buried by wind slabs formed by moderate westerly and south winds. Snow depths range from 30-60 cm near treeline to 50-120+ cm in alpine areas. Midpack layers consist of moist and faceted snow or refreeze crusts at lower elevations. A widespread basal melt-freeze crust persists near the ground. Surface crusts and buried wind slabs are present, with no highly reactive persistent weak layers reported.</p></div>
                         </div>
                     </section>
                 
@@ -200,23 +246,21 @@
         
                     <section class="card" aria-labelledby="prev-reports-title">
                         <h3 id="prev-reports-title">Previous Reports</h3>
-                        <div class="observation-text">- No Terrain and Mindset Report
-- No Field Weather Observations
-- No PWL Data</div>
+                        <div class="observation-text">No data provided.</div>
                     </section>
                 
 
         <!-- Key Actions -->
         <section class="card" aria-labelledby="key-actions-title">
             <h3 id="key-actions-title">Key Actions & Safety Considerations</h3>
-            <ul class="actions-list"><li>Monitor wind slab development in alpine lee and gullies as temperatures fluctuate.</li><li>Exercise caution at treeline zones where hazard rating is moderate.</li><li>Use conservative route-finding techniques and avoid areas with known wind slab formations.</li><li>Stay updated with any new observations or changes in weather that could affect snow stability.</li></ul>
+            <ul class="actions-list"><li>• Exercise caution in alpine and treeline zones where wind slab formation is evident.</li><li>• Limit travel in fans below gullies and steep walls where numerous size 1 to 1.5 avalanches have been observed.</li><li>• Monitor for reactive sensitivity in avalanche layers, particularly near treeline.</li><li>• Adapt route selection based on evolving surface conditions including surface and basal melt-freeze crust presence.</li><li>• Maintain conservative spacing and perform careful evaluations when exposed to trigger situations under low visibility and minimal travel conditions.</li></ul>
         </section>
 
         <!-- Closing Summary (optional) -->
         
                     <section class="summary-card" aria-labelledby="closing-summary-title">
                         <h3 id="closing-summary-title">Closing Summary</h3>
-                        <div class="summary-text">The current conditions near Lake Louise reflect stable midpack layers with isolated wind slab issues. While Alpine zones are low hazard, caution is urged at treeline areas where moderate risks persist. Backcountry travelers should focus on route selection away from wind-affected gullies and maintain awareness of potential instability given the limited observation data. Continuous monitoring of weather changes and ongoing snowpack assessments are recommended to ensure safe and optimal decision-making during your trip.</div>
+                        <div class="summary-text">Avalanche conditions at Lake Louise are influenced by recent wind slab activity and the evolving snowpack structure. The moderate to considerable hazard ratings in alpine and treeline zones indicate a need for heightened awareness and cautious decision-making. Prioritize travel on areas less affected by wind loading and avoid steep, gullied sectors where natural avalanches have been triggered. Continuous reassessment and consultation with local briefings are advised to ensure the best snow quality and safe backcountry operations.</div>
                     </section>
                 
     </div>
