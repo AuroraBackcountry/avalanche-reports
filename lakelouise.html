@@ -111,7 +111,7 @@
             <div class="meta-info">
                 <div class="meta-item" aria-label="Date">
                     <div class="meta-label">Date</div>
-                    <div class="meta-value">2025-11-20</div>
+                    <div class="meta-value">2025-11-22</div>
                 </div>
                 <div class="meta-item" aria-label="Time">
                     <div class="meta-label">Time</div>
@@ -133,13 +133,13 @@
             <h2 id="hazard-title">Avalanche Hazard Assessment</h2>
             <div class="rating-grid" role="list">
                 
-                            <div class="rating-card none" role="listitem">
+                            <div class="rating-card moderate" role="listitem">
                                 <div class="rating-label">Alpine</div>
-                                <div class="rating-value">NO RATING</div>
+                                <div class="rating-value">MODERATE</div>
                             </div>
-                            <div class="rating-card none" role="listitem">
+                            <div class="rating-card low" role="listitem">
                                 <div class="rating-label">Treeline</div>
-                                <div class="rating-value">NO RATING</div>
+                                <div class="rating-value">LOW</div>
                             </div>
                             <div class="rating-card none" role="listitem">
                                 <div class="rating-label">Below Treeline</div>
@@ -149,7 +149,13 @@
             </div>
 
             <!-- Comments subcard -->
-            <div class="subcard" aria-live="polite"><p style="color:#9ca3af; font-style:italic">No comments provided</p></div>
+            
+                        <div class="subcard" aria-labelledby="hazard-comments-title">
+                            <h3 id="hazard-comments-title">Comments</h3>
+                            <div class="observation-text">BTL below threshold.</div>
+                            <span class="badge warning">Confidence: Moderate</span>
+                        </div>
+                    
         </section>
 
         <!-- Observations and Problems -->
@@ -158,26 +164,50 @@
                 <h3>Avalanche Observations</h3>
                 
                             <div class="obs-item">
-                                <div class="obs-detail"><strong>Size:</strong> Not reported</div>
-                                <div class="obs-detail"><strong>Type:</strong> Not reported</div>
-                                <div class="obs-detail"><strong>Trigger:</strong> Not reported</div>
+                                <div class="obs-detail"><strong>Size:</strong> 1.5</div>
+                                <div class="obs-detail"><strong>Type:</strong> Wind Slab</div>
+                                <div class="obs-detail"><strong>Trigger:</strong> Xe</div>
                                 <div class="obs-detail"><strong>Time:</strong> Not reported</div>
-                                <div class="obs-detail" style="margin-top:8px;">Size 1 WSL on east aspects in steep alpine terrain </div>
-                            </div>
-                        
-                            <div class="obs-item">
-                                <div class="obs-detail"><strong>Size:</strong> Not reported</div>
-                                <div class="obs-detail"><strong>Type:</strong> Not reported</div>
-                                <div class="obs-detail"><strong>Trigger:</strong> Not reported</div>
-                                <div class="obs-detail"><strong>Time:</strong> Not reported</div>
-                                <div class="obs-detail" style="margin-top:8px;">Some loose dry observed out of steep alpine terrain with afternoon gusts, but otherwise no new with lots of evidence of skiier traffic in aggressive terrain around Bow Summit.</div>
+                                <div class="obs-detail" style="margin-top:8px;">Xe size 1.5, placement in lee just below ridge top propagated ~40m wide and 15-40cm deep and entraining significant mass while running.</div>
                             </div>
                         
             </div>
 
             <div class="card">
                 <h3>Current Avalanche Problems</h3>
-                <p style="color:#9ca3af; font-style:italic">No avalanche problems reported</p>
+                
+                            <div class="problem-box">
+                                <div class="problem-detail"><span class="problem-label">Problem 1:</span> Wind Slab</div>
+                                <div class="problem-detail"><span class="problem-label">Size:</span> 1</div>
+                                <div class="problem-detail"><span class="problem-label">Sensitivity:</span> Stubborn</div>
+                                <div class="problem-detail"><span class="problem-label">Distribution:</span> Specific</div>
+                                <p style="font-size:13px; color:#6b7280; margin-top:10px;">Strong to extreme southerely winds over the past 24 hrs</p>
+                            </div>
+                        
+                            <div class="problem-box">
+                                <div class="problem-detail"><span class="problem-label">Problem 2:</span> Dry Loose</div>
+                                <div class="problem-detail"><span class="problem-label">Size:</span> 1</div>
+                                <div class="problem-detail"><span class="problem-label">Sensitivity:</span> Unreactive</div>
+                                <div class="problem-detail"><span class="problem-label">Distribution:</span> Specific</div>
+                                <p style="font-size:13px; color:#6b7280; margin-top:10px;">Suspect but limited Obs due to poor visibility. Extreme to steep terrain </p>
+                            </div>
+                        
+                            <div class="problem-box">
+                                <div class="problem-detail"><span class="problem-label">Problem 3:</span> Storm Slab</div>
+                                <div class="problem-detail"><span class="problem-label">Size:</span> 1.5</div>
+                                <div class="problem-detail"><span class="problem-label">Sensitivity:</span> Unreactive</div>
+                                <div class="problem-detail"><span class="problem-label">Distribution:</span> Widespread</div>
+                                
+                            </div>
+                        
+                            <div class="problem-box">
+                                <div class="problem-detail"><span class="problem-label">Problem 4:</span> Wind Slab</div>
+                                <div class="problem-detail"><span class="problem-label">Size:</span> 1</div>
+                                <div class="problem-detail"><span class="problem-label">Sensitivity:</span> Stubborn</div>
+                                <div class="problem-detail"><span class="problem-label">Distribution:</span> Specific</div>
+                                <p style="font-size:13px; color:#6b7280; margin-top:10px;">Old WSL </p>
+                            </div>
+                        
             </div>
         </section>
 
@@ -186,10 +216,7 @@
         <!-- Terrain Management -->
         <section class="card" aria-labelledby="terrain-title">
             <h3 id="terrain-title">Terrain Management</h3>
-            
-                        
-                        
-                    
+            <p style="color:#9ca3af; font-style:italic">No terrain management data</p>
         </section>
 
         <!-- Snowpack Structure (optional) -->
@@ -198,11 +225,11 @@
                         <h3 id="snowpack-title">Snowpack Structure</h3>
                         <div class="subcard" aria-labelledby="snowpack-sim-title">
                             <h3 id="snowpack-sim-title">Report Similarities Identified</h3>
-                            <div class="observation-text"><p>- Thin surface sun crust or breakable melt-freeze crust on solar (southerly) aspects.  <br />- Presence of surface hoar crystals (5–10 mm) on cold, polar (northerly) aspects at or below treeline.  <br />- Snowpack generally soft above crust layers.  <br />- Nov 13th rain or melt-freeze crust present near 2100–2250 m elevation.  <br />- Snow depths range from 40–80 cm at treeline to 120 cm in alpine, tapering quickly below ~1800 m.  <br />- No persistent weak layers (PWLs) observed beyond the noted surface hoar presence.</p></div>
+                            <div class="observation-text"><p>- Both reports describe a snowpack with multiple layers, including surface crusts and faceted snow near the base.  <br />- Presence of a sun crust or melt-freeze crust on solar (southern) aspects.  <br />- Midpack layers consist of firmer, denser snow with varying hardness (ranging from 4F to 1F).  <br />- Faceted snow layers near the bottom of the snowpack, indicating ongoing weak layers close to the ground.  <br />- Snow depths vary with elevation, ranging roughly from 40 cm in below-treeline to up to 120 cm in alpine areas.  <br />- Important persistent weak layers include faceted grains near the ground and surface hoar buried near treeline on solar terrain.</p></div>
                         </div>
                         <div class="subcard" aria-labelledby="snowpack-desc-title" style="margin-top: var(--space-4);">
                             <h3 id="snowpack-desc-title">Snowpack Description</h3>
-                            <div class="observation-text"><p>A thin sun crust or breakable melt-freeze crust caps the snowpack on solar aspects. Surface hoar crystals (5–10 mm) are present on cold polar aspects near and below treeline. A 3–5 cm rain or melt-freeze crust from Nov 13 lies mostly between 2100–2250 m, overlain by soft snow. Snow depth is 40–80 cm at treeline, reaching 120 cm in alpine. No persistent weak layers currently identified. Surface hoar should be monitored if buried.</p></div>
+                            <div class="observation-text"><p>A thin, breakable sun crust overlays the surface on solar aspects, sometimes including surface hoar near treeline. Midpack snow is generally firm, ranging from 4F to 1F hardness within 20–40 cm depth. Near the ground, faceted crystals exist within the bottom 5 cm, with some moisture crusts present at 3–15 cm depth depending on elevation. Surface hoar and faceted layers should be monitored as persistent weak layers. Snow depth varies from 40–80 cm near treeline to 120 cm in alpine zones.</p></div>
                         </div>
                     </section>
                 
@@ -211,21 +238,21 @@
         
                     <section class="card" aria-labelledby="prev-reports-title">
                         <h3 id="prev-reports-title">Previous Reports</h3>
-                        <div class="observation-text">No previous operational or guide reports were provided.</div>
+                        <div class="observation-text">No previous operational or guide reports were provided from the prior day regarding terrain, mindset, or field weather observations.</div>
                     </section>
                 
 
         <!-- Key Actions -->
         <section class="card" aria-labelledby="key-actions-title">
             <h3 id="key-actions-title">Key Actions & Safety Considerations</h3>
-            <ul class="actions-list"><li>Avoid terrain with known wind slab development, particularly east aspects in steep alpine areas.</li><li>Use conservative route selection in areas with a thin sun or melt-freeze crust and monitor for any indications of buried surface hoar.</li><li>Remain aware of potential changes in snowpack, especially if skier traffic increases in aggressive terrain.</li><li>Prioritize travel on routes with supportive snow conditions and lower avalanche exposure.</li><li>Continually reassess conditions given the influence of afternoon gusts and variable snowpack depths.</li></ul>
+            <ul class="actions-list"><li>Monitor wind-affected slopes carefully; fresh wind slabs have been observed with southerly wind influence.</li><li>Avoid steep terrain where active ski cuts are noted, as these can locally elevate avalanche risk.</li><li>Prefer lower-elevation areas (below treeline) where the hazard remains low.</li><li>Execute thorough route selection to steer clear of areas with identified wind and storm slab problems.</li><li>Maintain vigilance for any changes in snowpack behavior while traversing mixed terrain.</li></ul>
         </section>
 
         <!-- Closing Summary (optional) -->
         
                     <section class="summary-card" aria-labelledby="closing-summary-title">
                         <h3 id="closing-summary-title">Closing Summary</h3>
-                        <div class="summary-text">The overall avalanche hazard remains low with high confidence in the ratings below treeline. However, practitioners should remain vigilant in steep alpine areas where wind slab conditions and loose dry sluffing are evident. Careful route selection and ongoing monitoring of surface hoar and crust developments are recommended to ensure safe travel. Focus on areas with the best snow quality and lower exposure to known avalanche problems, especially during periods of changing wind conditions.</div>
+                        <div class="summary-text">Today's report indicates a moderate Alpine avalanche hazard with stable conditions below treeline. While no large avalanches have been observed, the presence of wind slab and storm slab problems requires cautious terrain selection and adherence to risk management protocols. Operators should focus on areas with the best snow quality and remain alert for signs of instability, particularly on wind-loaded slopes.</div>
                     </section>
                 
     </div>
