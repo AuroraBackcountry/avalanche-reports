@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Avalanche Field Report - Whistler_Blackcomb</title>
+    <title>Avalanche - Whistler_Blackcomb</title>
     <style>
         :root {
-            --bg-grad-1: #667eea;
-            --bg-grad-2: #764ba2;
+            --bg-grad-1: #818791;
+            --bg-grad-2: #474a49;
             --text: #2d3748;
             --muted: #718096;
             --card: #ffffff;
@@ -34,36 +34,35 @@
         h3 { color:#2d3748; font-size: 16px; margin:0 0 var(--space-3); padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; display:flex; align-items:center; }
         h3::before { content:'▸'; color:#667eea; margin-right:8px; font-size:20px; }
 
-        /* Meta */
-        .meta-info { display:grid; grid-template-columns: 1fr; gap: var(--space-3); margin-top: var(--space-3); }
-        .meta-item { background: var(--surface); padding: 12px; border-radius: 8px; border-left: 4px solid #667eea; }
+        /* Meta - 2x2 on mobile, 4x1 on desktop */
+        .meta-info { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-3); margin-top: var(--space-3); }
+        .meta-item { background: var(--surface); padding: 12px; border-radius: 8px; border-left: 4px solid #000000; }
         .meta-label { font-size:12px; color:var(--muted); font-weight:600; text-transform:uppercase; margin-bottom:4px; }
         .meta-value { font-size:14px; color:var(--text); font-weight:500; }
 
-        /* Hazard Card (merged) */
+        /* Hazard Card */
         .hazard-card h2 { margin-bottom: var(--space-4); }
-        /* unify spacing between ratings and comments */
         .hazard-card { --rating-gap: var(--space-3); }
         .hazard-card .subcard { margin-top: var(--rating-gap); }
         .rating-grid { display:grid; grid-template-columns: 1fr; gap: var(--rating-gap); }
-        .rating-card { text-align:center; padding: 16px; border-radius: 10px; position: relative; color: #fff; }
+        .rating-card { text-align:center; padding: 16px; border-radius: 10px; position: relative; color: #000000; }
         .rating-label { font-size:12px; font-weight:600; text-transform:uppercase; opacity:.9; margin-bottom:6px; }
         .rating-value { font-size:22px; font-weight:800; letter-spacing:.3px; }
-        .rating-card.low { background: linear-gradient(135deg, #34d399, #10b981); }
-        .rating-card.moderate { background: linear-gradient(135deg, #fbbf24, #f59e0b); }
-        .rating-card.considerable { background: linear-gradient(135deg, #fb923c, #f97316); }
-        .rating-card.high { background: linear-gradient(135deg, #ef4444, #dc2626); }
+        .rating-card.low { background: linear-gradient(135deg, #50b848, #50b848); }
+        .rating-card.moderate { background: linear-gradient(135deg, #fff300, #fff300); }
+        .rating-card.considerable { background: linear-gradient(135deg, #f8941d, #f8941d); }
+        .rating-card.high { background: linear-gradient(135deg, #ed1d26, #ed1d26); }
         .rating-card.extreme { background: linear-gradient(135deg, #991b1b, #7f1d1d); }
         .rating-card.none { background: linear-gradient(135deg, #94a3b8, #64748b); }
 
         /* Comments subcard */
-        .subcard { background: var(--surface); border-radius: 10px; padding: var(--space-4); border-left: 4px solid #667eea; }
+        .subcard { background: var(--surface); border-radius: 10px; padding: var(--space-4); border-left: 4px solid #000000; }
         .subcard h3 { border:0; padding:0; margin:0 0 var(--space-2); }
         .observation-text { font-size:14px; line-height:1.6; color:#4a5568; }
         .badge { display:inline-block; padding:4px 10px; border-radius: 12px; font-size:12px; font-weight:600; margin-right:8px; margin-top:8px; }
         .badge.warning { background:#fef3c7; color:#92400e; }
 
-        /* Two-column grids upgrade (mobile-first) */
+        /* Two-column grids */
         .grid-2col { display:grid; grid-template-columns: 1fr; gap: var(--space-5); }
 
         /* Observation chips */
@@ -76,7 +75,7 @@
         .problem-label { font-weight:600; margin-right:5px; }
 
         /* Lists */
-        .actions-list, .instability-list { list-style:none; padding-left:0; }
+        .actions-list, .instability-list { list-style:none; padding-left:0; margin:0; }
         .instability-list li { padding:10px; margin-bottom:8px; background:#fee2e2; border-left:4px solid #ef4444; border-radius:4px; font-size:14px; color:#991b1b; }
         .instability-list li::before { content:'⚠'; margin-right:10px; }
         .actions-list li { padding:12px; margin-bottom:10px; background:#dbeafe; border-left:4px solid #3b82f6; border-radius:4px; font-size:14px; color:#1e40af; line-height:1.5; }
@@ -90,14 +89,13 @@
 
         @media (min-width: 769px) {
             body { padding:20px; }
-            .meta-info { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+            .meta-info { grid-template-columns: repeat(4, 1fr); }
             .rating-grid { grid-template-columns: repeat(3, 1fr); }
             .grid-2col { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
             h1 { font-size:24px; }
             .rating-value { font-size:24px; }
         }
 
-        /* Reduce motion */
         @media (prefers-reduced-motion: reduce) {
             * { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
         }
@@ -107,15 +105,15 @@
     <div class="dashboard" role="main">
         <!-- Header -->
         <header class="header" aria-labelledby="page-title">
-            <h1 id="page-title">Field Condition Report</h1>
+            <h1 id="page-title">Field Report</h1>
             <div class="meta-info">
                 <div class="meta-item" aria-label="Date">
                     <div class="meta-label">Date</div>
-                    <div class="meta-value">2025-11-26</div>
+                    <div class="meta-value">2025-11-29</div>
                 </div>
                 <div class="meta-item" aria-label="Time">
                     <div class="meta-label">Time</div>
-                    <div class="meta-value">11:41 PM</div>
+                    <div class="meta-value">—</div>
                 </div>
                 <div class="meta-item" aria-label="Location">
                     <div class="meta-label">Location</div>
@@ -128,35 +126,48 @@
             </div>
         </header>
 
-        <!-- Hazard: Ratings + Comments (merged into one card) -->
+        <!-- Hazard Assessment -->
         <section class="card hazard-card" aria-labelledby="hazard-title">
             <h2 id="hazard-title">Avalanche Hazard Assessment</h2>
             <div class="rating-grid" role="list">
-                
-                            <div class="rating-card none" role="listitem">
-                                <div class="rating-label">Alpine</div>
-                                <div class="rating-value">NO RATING</div>
-                            </div>
-                            <div class="rating-card none" role="listitem">
-                                <div class="rating-label">Treeline</div>
-                                <div class="rating-value">NO RATING</div>
-                            </div>
-                            <div class="rating-card none" role="listitem">
-                                <div class="rating-label">Below Treeline</div>
-                                <div class="rating-value">NO RATING</div>
-                            </div>
-                        
+               
+            <div class="rating-card none" role="listitem">
+                <div class="rating-label">Alpine</div>
+                <div class="rating-value">NO RATING</div>
+            </div>
+            <div class="rating-card none" role="listitem">
+                <div class="rating-label">Treeline</div>
+                <div class="rating-value">NO RATING</div>
+            </div>
+            <div class="rating-card none" role="listitem">
+                <div class="rating-label">Below Treeline</div>
+                <div class="rating-value">NO RATING</div>
+            </div>
+        
             </div>
 
-            <!-- Comments subcard -->
-            <div class="subcard" aria-live="polite"><p style="color:#9ca3af; font-style:italic">No comments provided</p></div>
+            
+                        <div class="subcard">
+                            <h3>Comments</h3>
+                            <div class="observation-text">Isolated to mostly south facing terrain in the very upper alpine bands. </div>
+                            
+                        </div>
+                    
         </section>
 
         <!-- Observations and Problems -->
-        <section class="grid-2col" aria-label="Observations and Problems">
+        <section class="grid-2col">
             <div class="card">
                 <h3>Avalanche Observations</h3>
                 
+                            <div class="obs-item">
+                                <div class="obs-detail"><strong>Size:</strong> Not reported</div>
+                                <div class="obs-detail"><strong>Type:</strong> Not reported</div>
+                                <div class="obs-detail"><strong>Trigger:</strong> Not reported</div>
+                                <div class="obs-detail"><strong>Time:</strong> Not reported</div>
+                                <div class="obs-detail" style="margin-top:8px;">Xc testing this am produce a sz 1 cornice failure. No other avalanches observed. </div>
+                            </div>
+                        
                             <div class="obs-item">
                                 <div class="obs-detail"><strong>Size:</strong> Not reported</div>
                                 <div class="obs-detail"><strong>Type:</strong> Not reported</div>
@@ -177,71 +188,39 @@
 
             <div class="card">
                 <h3>Current Avalanche Problems</h3>
-                
-                            <div class="problem-box">
-                                <div class="problem-detail"><span class="problem-label">Problem 1:</span> Not specified</div>
-                                <div class="problem-detail"><span class="problem-label">Size:</span> Not reported</div>
-                                <div class="problem-detail"><span class="problem-label">Sensitivity:</span> Not reported</div>
-                                <div class="problem-detail"><span class="problem-label">Distribution:</span> Not reported</div>
-                                
-                            </div>
-                        
-                            <div class="problem-box">
-                                <div class="problem-detail"><span class="problem-label">Problem 2:</span> Not specified</div>
-                                <div class="problem-detail"><span class="problem-label">Size:</span> Not reported</div>
-                                <div class="problem-detail"><span class="problem-label">Sensitivity:</span> Not reported</div>
-                                <div class="problem-detail"><span class="problem-label">Distribution:</span> Not reported</div>
-                                
-                            </div>
-                        
+               
+            <div class="problem-box">
+                <div class="problem-detail"><span class="problem-label">Problem 1:</span> Wind Slab</div>
+                <div class="problem-detail"><span class="problem-label">Size:</span> 1.5</div>
+                <div class="problem-detail"><span class="problem-label">Sensitivity:</span> Mixed</div>
+                <div class="problem-detail"><span class="problem-label">Distribution:</span> Mixed (Isolated to Widespread).</div>
+                <div class="problem-detail"><span class="problem-label">Depth:</span> 10-40 cm</div>
+            </div>
+        
             </div>
         </section>
 
-        <!-- Hazard Comments card REMOVED (it was merged into hazard-card) -->
 
-        <!-- Terrain Management -->
-        <section class="card" aria-labelledby="terrain-title">
-            <h3 id="terrain-title">Terrain Management</h3>
-            
-                        
-                        
-                    
-        </section>
-
-        <!-- Snowpack Structure (optional) -->
+        <!-- Snowpack Structure -->
         
-                    <section class="card" aria-labelledby="snowpack-title">
-                        <h3 id="snowpack-title">Snowpack Structure</h3>
-                        <div class="subcard" aria-labelledby="snowpack-sim-title">
-                            <h3 id="snowpack-sim-title">Report Similarities Identified</h3>
-                            <div class="observation-text"><p>- Snow depth varies with elevation, decreasing significantly below 1600-1800m.  <br />- A mid-pack melt-freeze crust (MFcr) exists at 40-60cm depth, formed in mid to late November.  <br />- Faceting above and below this crust is observed, indicating some persistent weak layers.  <br />- Surface snow ranges from recent storm snow to wind slabs and crusts.  <br />- Basal snow includes older faceted layers with some support from thin crusts.  <br />- Moist snow observed near/below treeline elevations.  <br />- Alpine snow depths vary widely, with 100-200+ cm in higher areas.</p></div>
-                        </div>
-                        <div class="subcard" aria-labelledby="snowpack-desc-title" style="margin-top: var(--space-4);">
-                            <h3 id="snowpack-desc-title">Snowpack Description</h3>
-                            <div class="observation-text"><p>Surface layers include 10-30 cm of recent snow over thin crusts and wind slabs. A persistent melt-freeze crust lies 40-60 cm deep, with faceted weak layers above and below this crust, requiring ongoing monitoring. Snow depth reduces significantly below 1600-1800 m, with moist snow near treeline. Deeper basal layers contain older faceted snow and supportive crust layers. Overall, the snowpack is strongest near the crusts but contains persistent weak faceted layers at mid-depth.</p></div>
-                        </div>
+                    <section class="card">
+                        <h3>Snowpack Structure</h3>
+                        <div class="observation-text">Wind-affected snow surfaces in the alpine and treeline continue to facet, with thin to mid-thickness melt-freeze crusts present from 15 to 120 cm depth. Faceting is observed around and above these crusts, indicating ongoing weak layer development. Snowpack depth decreases sharply below 1600-1700 m, with a supportive basal crust underlying thinning snow.</div>
                     </section>
                 
 
-        <!-- Previous Reports (optional) -->
-        
-                    <section class="card" aria-labelledby="prev-reports-title">
-                        <h3 id="prev-reports-title">Previous Reports</h3>
-                        <div class="observation-text">Previous day operations focused on open hiking and limited cross-country alpine terrain use; conditions remained stable with minimal issues noted.</div>
-                    </section>
-                
-
+      
         <!-- Key Actions -->
-        <section class="card" aria-labelledby="key-actions-title">
-            <h3 id="key-actions-title">Key Actions & Safety Considerations</h3>
-            <ul class="actions-list"><li>Monitor for any escalation in slab activity.</li><li>Use conservative route selection in alpine areas.</li><li>Maintain status quo operations in open hiking and uphill access.</li><li>Regularly reassess weak layer conditions, especially around the melt-freeze crust.</li></ul>
+        <section class="card">
+            <h3>Key Actions & Safety Considerations</h3>
+            <ul class="actions-list"><li>Exercise caution on north- and south-facing slopes with wind slab pockets.</li><li>Monitor faceting areas above melt-freeze crusts.</li><li>Choose routes where snowpack remains supportive (above 1600 m).</li><li>Stay alert to shifting light NE winds and weather changes.</li></ul>
         </section>
 
-        <!-- Closing Summary (optional) -->
+        <!-- Closing Summary -->
         
-                    <section class="summary-card" aria-labelledby="closing-summary-title">
-                        <h3 id="closing-summary-title">Closing Summary</h3>
-                        <div class="summary-text">Overall, the report indicates a stable snowpack with persistent weak layers and isolated storm slab concerns. Prioritize cautious alpine routing, focus on areas with firm snow, and stay alert for any changes in surface activity.</div>
+                    <section class="summary-card">
+                        <h3>Closing Summary</h3>
+                        <div class="summary-text">The snowpack remains stable with overall low hazard ratings. Focus on avoiding isolated wind slab areas and monitoring faceting zones. Prioritize routes with consistent, supportive snow conditions for safe backcountry travel.</div>
                     </section>
                 
     </div>
